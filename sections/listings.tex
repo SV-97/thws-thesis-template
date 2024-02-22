@@ -1,0 +1,20 @@
+\chapter{Listings}
+
+\section{Recursive algorithm for finding the pointwise minimum of a set of affine functions}
+\label{sec:pointwise-min-rec-py}
+
+We start out with a few imports and the type definitions we need.
+
+\inputminted[firstline=1, lastline=25]{python}{listings/pointwise_min_rec.py}
+
+Afterwards we'll define the top level function taking a list of affine functions and optionally (to account for the case where the input is empty) returning a piecewise affine function representing the piecewise minimum. Note that this uses a not yet defined helper that will manage the actually recursive core.
+
+\inputminted[firstline=28, lastline=48]{python}{listings/pointwise_min_rec.py}
+
+Lastly we define the core function that (in this case lazily) constructs the leaves of the tree.
+
+\inputminted[firstline=51, lastline=79]{python}{listings/pointwise_min_rec.py}
+
+A little example might look like this.
+
+\inputminted[firstline=83, lastline=84]{python}{listings/pointwise_min_rec.py}

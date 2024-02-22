@@ -1,0 +1,82 @@
+\addcontentsline{toc}{section}{Preface}
+\setcounter{section}{0}
+\addcontentsline{toc}{subsection}{\protect\numberline{\thesection}Table of Contents}
+\tableofcontents
+\newpage
+
+\subsection{List of Notation}
+
+\begin{center}
+    \begin{tabular}{l p{.9\textwidth}}
+        Symbol & Definition                         \\
+        \hline
+        \st    & Abbreviation for \emph{such that}.
+        \\ \resp    & Abbreviation for \emph{respectively}.
+        \\ \wrt    & Abbreviation for \emph{with respect to}.
+        \\ $m:n$                     & Discrete interval $(m,m+1,...,n-1,n)$ for integers $m \leq n$.
+        \\ $[m:n]$ & Alternative notation for discrete intervals that we use whenever the other one may lead to ambiguity or confusion.
+        \\ $f \in \O(g(x))$          & Landau symbol denoting asymptotic boundedness of $f \colon D \to \R$ by $g \colon D \to \R$ from above; so $f \in \O(g(x)) \DefIff \limsup_{x \to a} \left| \frac{f(x)}{g(x)}  \right| < \infty $ for $a \in D$ \st the limit is well defined. The limiting point is usually omitted since it's clear from context
+        \\ $f \in \Omega(g(x))$          & Landau symbol denoting asymptotic boundedness of $f \colon D \to \R$ by $g \colon D \to \R$ from below; $g \in \O(f(x))$
+        \\ $f \in \Theta(g(x))$          & Landau symbol denoting asymptotic equality of $f \colon D \to \R$ and $g \colon D \to \R$; $f \in \O(g(x))$ and $g \in \O(f(x))$
+        \\ $(f(i))_{i \in I}$        & Sequence with elements $\{f(i) \colon i \in I\}$ ordered by a strict total order on $I$
+        \\ $(f(i))_{i=1,...,n}$      & Finite sequence indexed by integers; so $(f(i))_{i \in m:n}$
+        \\ $\Rnn$                    & Nonnegative real numbers; so $\{x \in \R \colon x \geq 0 \}$
+        \\ $\bigsqcup_{i \in I} A_i$ & Disjoint union of sets $A_i$; so the set $\{(i, a)\colon a \in A_i\}$. If the all the $A_i$ are already disjoint we identify this set (through the obvious isomorphism) with $\bigcup_{i \in I} A_i$ and merely use the new notation to emphasize disjointness.
+        \\ $\Part(A)$                & Set of all partitions of a set $A$; so the set of all sets $P$ \st $A = \bigsqcup_{S \in P} S$.
+        \\ $|A|$                     & Cardinality of a set $A$.
+        \\ $\#I$                     & Number of elements of a tuple $I$; so $\#I=k \DefIff I=(i_1,...,i_k)$ for some $i_1,...,i_k$.
+        \\ $(a_c^r)_{\substack{r=1,...,n \\ c=1,...,m}}$ & $n \times m$ matrix where the $r$-th row has value $a_c^r$ in the $c$-th column. If $n$ \resp $m$  equals $1$ we may omit the corresponding index $r$ \resp $c$.
+        \\ $B_r(x)$ & An open ball of radius $r > 0$ around a point $x$ of some metric space.
+        \\ $\Z$ & The set of integers.
+        \\ $\N$ & The set of natural numbers starting at $1$; so the positive integers.
+        \\ $\N_0$ & The set of natural numbers starting at $0$; so the nonnegative integers.
+        \\ $\mathcal{P}(A)$ & The powerset of a set $A$; so the set of all subsets.
+        \\ $\partial A$ & The topological boundary of a set.
+        \\ $\D[f]\big|_x$ & The derivative of a function $f$ evaluated at some point $x$.
+    \end{tabular}
+\end{center}
+
+
+\newpage
+
+\subsection{Basic definitions}
+
+\begin{definition}[Ordered partition]
+    Let $A$ be a set and $<$ a strict partial order on $A$ such that every subset of $A$ contains both a minimal and a maximal element. Define the partial order $\prec$ on $\mathcal{P}(A)$ by $P_1 \prec P_2 \DefIff \max P_1 < \min P_2$ for all $P_1, P_2 \in \mathcal{P}(A)$.
+    We call a set $P \subseteq \mathcal{P}(A)$ an $<$-ordered setpartition of $A$ if
+    \begin{itemize}
+        \item $P$ is a partition of $A$
+        \item $<$ is a total order on all elements of $P$
+        \item and $\prec$ is a total order on $P$.
+    \end{itemize}
+
+    We identify any such ordered partition with the sequence $(T_i)_i$ obtained by ordering all elements of $P$ by $<$ to obtain tuples $\{T_i\}_i$ which are then ordered by $\prec$ to obtain $(T_i)_i$.
+\end{definition}
+
+\begin{remark}[Abuse of notation]
+    It's often-times convenient to identify a tuple or sequence $(f(i))_{i \in I}$ with the corresponding set $\{f(i)\}_{i \in I}$ as described in the previous definition. We will do so implicitly in particular for (ordered) partitions of discrete intervals $m:n$.
+\end{remark}
+
+\begin{example}
+    Let $A = 1:3$ with the standard order on integers then $\prec$ on $\mathcal{P}(A)$ corresponds to the Hasse diagram
+    % https://q.uiver.app/?q=WzAsNyxbMSwyLCJcXHsxXFx9Il0sWzEsMSwiXFx7MlxcfSJdLFsyLDAsIlxcezIsM1xcfSJdLFswLDIsIlxcezEsMlxcfSJdLFsxLDAsIlxcezNcXH0iXSxbMywyLCJcXHsxLDIsM1xcfSJdLFsyLDIsIlxcezEsM1xcfSJdLFswLDFdLFswLDJdLFsxLDRdLFszLDRdXQ==
+    \[\begin{tikzcd}
+            & {\{3\}} & {\{2,3\}} \\
+            & {\{2\}} \\
+            {\{1,2\}} & {\{1\}} & {\{1,3\}} & {\{1,2,3\}}
+            \arrow[from=3-2, to=2-2]
+            \arrow[from=3-2, to=1-3]
+            \arrow[from=2-2, to=1-2]
+            \arrow[from=3-1, to=1-2]
+        \end{tikzcd}\]
+    where we can clearly see the ordered partitions
+    \begin{align}
+        \OPart(A) = \{
+        (1,2,3),
+        (1,(2,3)),
+        ((1,2),3),
+        ((1,2,3))
+        \}.
+    \end{align}
+    We note that $\Part(A) \setminus \OPart(A)$ only contains $\{\{1,3\}, \{2\}\}$.
+\end{example}

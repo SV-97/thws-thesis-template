@@ -1,0 +1,6 @@
+digraph G { # strict digraph
+    rankdir=RL;
+    "r=n,k=K" -> "r<n,k<K";
+    node [shape=box];
+    "k=1";
+}

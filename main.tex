@@ -1,0 +1,34 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\input{misc/prelude}
+
+\begin{document}
+
+\include{misc/titlepage}
+
+\title{The title}
+
+\author{The authors}
+
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+    \noindent
+    \lipsum[1-2]
+\end{abstract}
+
+\include{sections/preface}
+\include{sections/section1}
+% \include{sections/section2}
+% \include{sections/section3}
+% ...
+
+\appendix
+
+\addcontentsline{toc}{section}{Bibliography}
+\include{bibliography}
+
+\end{document}

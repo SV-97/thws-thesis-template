@@ -1,0 +1,241 @@
+\usepackage{pdfpages}
+\usepackage[english]{babel}
+\usepackage[hyphens]{url} % break long url's with hyphens
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+% \usepackage[a4paper, left=30mm, right=30mm, top=30mm, bottom=40mm]{geometry}
+\usepackage[a4paper]{geometry}
+\newgeometry{twoside}
+
+% colors
+\usepackage{xcolor}
+% some of the colours from tableau 10
+% https://help.tableau.com/current/pro/desktop/en-us/formatting_create_custom_colors.htm
+\definecolor{mpl-blue}{HTML}{1f77b4}
+\definecolor{mpl-orange}{HTML}{fba402}
+\definecolor{mpl-green}{HTML}{2ca02c}
+\definecolor{mpl-red}{HTML}{d62728}
+\definecolor{mpl-purple}{HTML}{9467bd}
+\definecolor{mpl-brown}{HTML}{8c564b}
+\definecolor{mpl-pink}{HTML}{e377c2}
+\definecolor{mpl-grey}{HTML}{7f7f7f}
+\definecolor{mpl-gray}{HTML}{7f7f7f}
+\definecolor{mpl-lime}{HTML}{bcbd22}
+\definecolor{mpl-cyan}{HTML}{17becf}
+\definecolor{links-color}{HTML}{044f83} % 020f54
+
+\hypersetup{
+    % allbordercolors={0 0 0},
+    pdfborderstyle={/S/U/W 0.1},
+    % this sets some pdf metadata
+    pdftitle={Title of the thesis},
+    pdfauthor={Author Name},
+    colorlinks=true,
+    allcolors=links-color,
+}
+
+%\usepackage{multicol}
+\usepackage[breakable]{tcolorbox}
+\usepackage{csquotes}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{float}
+
+\usepackage{footmisc} % footnote references
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% for mathscr
+\usepackage{mathrsfs}
+%\usepackage{newtxmath}
+
+% commutative diagrams stuff
+\usepackage{quiver}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{algorithm2e}
+
+% for diagonally split cells in tables
+\usepackage{diagbox}
+
+% manage fonts
+\usepackage{fontspec}
+% alternate monospace font - has to be installed
+% \setmonofont{Fira Code}[Scale=MatchLowercase]
+
+
+% for listings
+\usepackage{minted}
+\setminted[python]{
+    %fontsize=\footnotesize,
+    frame=lines,
+    linenos,
+    samepage,
+}
+
+
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{sources.bib}
+
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy} %eigener Seitenstil
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+% Mit \rightmark geht Subsection Name
+
+\fancyhead[LO,RE]{\rightmark} %Kopfzeile links
+\fancyhead[RO,LE]{\thepage} %Kopfzeile rechts
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+% \fancyfoot[C]{\thepage} %Seitennummer
+%\renewcommand{\footrulewidth}{0.4pt} %untere Trennlinie
+
+% for odd / even page conditional
+\usepackage[strict]{changepage}
+
+% set special style for "plain" pages (chapter start, bibliography etc.)
+\fancypagestyle{plain}{
+    \fancyhf{} % clear header / footer style
+    \fancyfoot[RO,LE]{\thepage} % page number in bottom right corner
+    \renewcommand{\headrulewidth}{0.0pt} %obere Trennlinie
+    % change lower bar to thick bar in the right corner
+    \renewcommand{\footrule}{
+        \checkoddpage
+        \ifoddpage
+            \makebox[\headwidth][r]{\rule{.075\headwidth}{0.1cm}}
+        \else
+            \makebox[\headwidth][l]{\rule{.075\headwidth}{0.1cm}}
+        \fi
+    }
+}
+
+\fancypagestyle{empty}{
+    \fancyhf{} % clear header / footer style
+    \renewcommand{\headrulewidth}{0.0pt} %obere Trennlinie
+}
+
+\setlength{\headheight}{14pt}
+
+% start chapters on even pages
+% \makeatletter
+% \renewcommand*\cleardoublepage{\clearpage\if@twoside
+%         \ifodd\c@page \hbox{}\newpage\if@twocolumn\hbox{}%
+%                 \newpage\fi\fi\fi}
+% \makeatother
+
+% table of contents
+% nottoc to hide "Contents" from TOC
+\usepackage[nottoc]{tocbibind}
+\setcounter{tocdepth}{2}
+\setlength{\parindent}{0pt}
+
+% math stuff
+\input{misc/theorems}
+
+% Complex number stuff
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+\def\i{\mathscr{i}}
+\def\e{e}
+
+% Various sets
+\def\R{\ensuremath{\mathbb{R}}}
+\def\C{\ensuremath{\mathbb{C}}}
+\def\N{\ensuremath{\mathbb{N}}}
+\def\Z{\ensuremath{\mathbb{Z}}}
+\def\H{\ensuremath{\mathbb{H}}}
+\def\K{\ensuremath{\mathbb{K}}}
+\def\Rnn{\ensuremath{\mathbb{R}_{\geq 0}}}
+\def\Part{\operatorname{Part}}
+\def\OPart{\operatorname{OPart}}
+\def\Seg{\operatorname{Seg}}
+
+% Topology stuff
+\def\Interior#1{\overset{\circ}{#1}}
+\def\Closure#1{\overline{#1}}
+
+% Defining equivalence
+\def\ShortDefIff{:\Leftrightarrow}
+\def\DefIff{:\Longleftrightarrow}
+
+% smaller matrix env 
+\newenvironment{smallpmatrix}
+{\left(\begin{smallmatrix}}
+        {\end{smallmatrix}\right)}
+% Calculus
+\def\d{\ensuremath{\mathrm{d}}}
+\def\D{\ensuremath{\mathrm{D}}}
+
+% Linear algebra
+\def\Norm#1{\lVert#1\rVert}
+
+% kontextsensitives Spatium. vgl. http://constantinfreitag.de/hp_docs/Freitag_MyP_2015_LaTeX-Einfuehrung_fuer_Linguisten.pdf
+\usepackage{xspace}
+
+% Abbreviations
+\def\zB{z.\,B.\xspace}
+\def\iA{i.\,A.\xspace}
+\def\ua{u.\,a.\xspace}
+\def\idR{i.\,d.\,R.\xspace}
+\def\st{s.\,t.\xspace}
+\def\resp{resp.\xspace}
+\def\wrt{w.\,r.\,t.\xspace}
+\def\etc{etc.\xspace}
+
+% the following are just some defs for maths stuff - can freely be removed / modified
+
+% optimization 
+\def\argmin{\operatornamewithlimits{arg\, min}}
+\def\argmax{\operatornamewithlimits{arg\, max}}
+\def\CV{\operatorname{CV}}
+
+% Landau symbols
+% TODO: rename to BigO, SmallO to have \O for orthogonal group
+\def\O{\mathcal{O}}
+\def\o{\mathcal{o}}
+
+% some matrix groups
+\def\Ortho{\mathbf{O}}
+\def\GL{\mathbf{GL}}
+\def\SO{\mathbf{SO}}
+
+% specialized symbols
+\def\PcwPoly{\mathrm{PcwPoly}}
+\def\Poly{\mathrm{Poly}}
+\def\deg{\operatorname{deg}}
+\def\dof{\operatorname{dof}}
+\def\sgn{\operatorname{sgn}}
+
+% Statistics
+\def\SE{\operatorname{SE}}
+\def\Var{\operatorname{Var}}
+
+% Programming stuff
+% C++
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}\xspace}
+% C#
+\def\CSharp{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf \#}}\xspace}
+% F#
+\def\FSharp{{F\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf \#}}\xspace}
+
+% Units of measure
+\def\MiB{\,\mathrm{MiB}}
+\def\KiB{\,\mathrm{KiB}}
+\def\s{\,\mathrm{s}}
+\def\GHz{\,\mathrm{GHz}}
+\def\MHz{\,\mathrm{MHz}}
+\def\kHz{\,\mathrm{kHz}}
+
+% for dummy text
+\usepackage{lipsum}
